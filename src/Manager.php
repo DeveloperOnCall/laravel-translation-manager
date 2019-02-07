@@ -55,7 +55,13 @@ class Manager
         //allows for vendor lang files to be properly recorded through recursion.
         $vendor = true;
         if ( $base == null ) {
-            $base   = $this->app[ 'path.lang' ];
+            /*
+             * Adding in the Ability to save to multi-tenant lang location
+            */
+            $thissite  = \App(\Hyn\Tenancy\Environment::class)->tenant();
+            $tenant_path = $thissite->uuid.'/lang';
+            $base = $tenant_path; //$this->app[ 'path.lang' ];
+            //$base   = $this->app[ 'path.lang' ];
             $vendor = false;
         }
 
