@@ -244,7 +244,12 @@ class Manager
 
     public function exportTranslations( $group = null, $json = false )
     {
-        $basePath = $this->app[ 'path.lang' ];
+        /*
+         * Adding in the Ability to save to multi-tenant lang location
+         */
+        $thissite  = \App(\Hyn\Tenancy\Environment::class)->tenant();
+        $tenant_path = $thissite->uuid.'/lang';
+        $basePath = $tenant_path; //$this->app[ 'path.lang' ];
 
 
         if ( !is_null( $group ) && !$json ) {
