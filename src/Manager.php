@@ -59,7 +59,7 @@ class Manager
              * Adding in the Ability to save to multi-tenant lang location
             */
             $thissite  = \App(\Hyn\Tenancy\Environment::class)->tenant();
-            $tenant_path = $thissite->uuid.'/lang';
+            $tenant_path = storage_path().'/app/tenancy/tenants/'.$thissite->uuid.'/lang';
             $base = $tenant_path; //$this->app[ 'path.lang' ];
             //$base   = $this->app[ 'path.lang' ];
             $vendor = false;
@@ -254,7 +254,7 @@ class Manager
          * Adding in the Ability to save to multi-tenant lang location
          */
         $thissite  = \App(\Hyn\Tenancy\Environment::class)->tenant();
-        $tenant_path = $thissite->uuid.'/lang';
+        $tenant_path = storage_path().'/app/tenancy/tenants/'.$thissite->uuid.'/lang';
         $basePath = $tenant_path; //$this->app[ 'path.lang' ];
 
 
