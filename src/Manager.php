@@ -107,7 +107,7 @@ class Manager
             }
         }
 
-        foreach ( $this->files->files( $this->app[ 'path.lang' ] ) as $jsonTranslationFile ) {
+        foreach ( $this->files->files( $tenant_path /*$this->app[ 'path.lang' ]*/ ) as $jsonTranslationFile ) {
             if ( strpos( $jsonTranslationFile, '.json' ) === false ) {
                 continue;
             }
@@ -314,7 +314,7 @@ class Manager
             foreach ( $tree as $locale => $groups ) {
                 if ( isset( $groups[ self::JSON_GROUP ] ) ) {
                     $translations = $groups[ self::JSON_GROUP ];
-                    $path         = $this->app[ 'path.lang' ] . '/' . $locale . '.json';
+                    $path         = $tenant_path /*$this->app[ 'path.lang' ]*/ . '/' . $locale . '.json';
                     $output       = json_encode( $translations, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_UNICODE );
                     $this->files->put( $path, $output );
                 }
